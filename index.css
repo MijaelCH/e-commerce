@@ -1,0 +1,246 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #ffb703;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    color: #023047;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    color: #023047;
+}
+
+.contenedor-principal {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.menu-categorias {
+    width: 200px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-right: 20px;
+}
+
+
+
+.menu-categorias h2 {
+    margin-top: 0;
+}
+
+.menu-categorias ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu-categorias li {
+    margin-bottom: 10px;
+}
+
+.menu-categorias a {
+    text-decoration: none;
+    color: #333;
+}
+
+main {
+    flex: 1;
+}
+
+.buscador {
+    margin-bottom: 20px;
+}
+
+.buscador input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.galeria-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.producto {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+}
+
+.producto img {
+    max-width: 100%;
+    height: auto;
+}
+
+.producto h3 {
+    margin: 10px 0;
+}
+
+.producto .precio {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.producto .valoracion {
+    color: #ffd700;
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+.producto button {
+    background-color: #023047;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.producto button:hover {
+    background-color: #023047;
+}
+
+.carrito {
+    width: 300px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    position: sticky;
+    top: 20px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+.carrito h2 {
+    text-align: center;
+    color: #333;
+}
+
+.item-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.item-carrito .cantidad {
+    display: flex;
+    align-items: center;
+}
+
+.item-carrito .cantidad button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.item-carrito button.eliminar {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#formulario-cliente {
+    margin-top: 20px;
+
+}
+
+#formulario-cliente label {
+    display: flex;
+    margin-top: 10px;
+    gap: 8px;
+}
+
+#formulario-cliente input{
+    
+}
+
+
+#formulario-cliente textarea {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 8px;
+}
+
+#formulario-cliente fieldset {
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+#realizar-pedido {
+    background-color: #023047;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0;
+    font-size: 1.1em;
+    width: 100%;
+}
+
+#realizar-pedido:hover {
+    background-color: #023047;
+}
+
+@media (max-width: 768px) {
+    .contenedor-principal {
+        flex-direction: column;
+    }
+
+    .menu-categorias {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .carrito {
+        width: 100%;
+        margin-top: 20px;
+        position: static;
+    }
+}
