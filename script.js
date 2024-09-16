@@ -1,15 +1,20 @@
 // Simulación de datos de productos con categorías
 const productos = [
-    { id: 1, nombre: "Arroz", precio: 2.99, valoracion: 4, imagen: "./img/Arroz.jpg", categoria: "abarrotes" },
-    { id: 2, nombre: "Fideos", precio: 1.99, valoracion: 5, imagen: "./img/Fideos.jpg", categoria: "pastas" },
-    { id: 3, nombre: "Gaseosa", precio: 1.50, valoracion: 3, imagen: "./img/Gaseosa.jpg", categoria: "bebidas" },
-    { id: 4, nombre: "Whisky", precio: 29.99, valoracion: 4, imagen: "./img/Whisky.jpg", categoria: "licores" },
-    { id: 5, nombre: "Chocolate de Cabeza", precio: 0.99, valoracion: 5, imagen: "./img/Chocolate.jpg", categoria: "golosinas" },
-    { id: 6, nombre: "Aceite Mazola", precio: 4.99, valoracion: 4, imagen: "./img/Aceite.jpg", categoria: "abarrotes" },
-    { id: 7, nombre: "Ravioles", precio: 3.99, valoracion: 4, imagen: "./img/Ravioles.jpg", categoria: "pastas" },
-    { id: 8, nombre: "Jugo Orange", precio: 2.50, valoracion: 3, imagen: "./img/Jugo.jpg", categoria: "bebidas" },
-    { id: 9, nombre: "Ron", precio: 19.99, valoracion: 4, imagen: "./img/Ron.jpg", categoria: "licores" },
-    { id: 10, nombre: "Caramelos", precio: 0.50, valoracion: 3, imagen: "./img/Caramelos.jpg", categoria: "golosinas" },
+    { id: 1, nombre: "Arroz", precio: 2.99, valoracion: 4, imagen: "./img/arroz.jpg", categoria: "abarrotes" },
+    { id: 2, nombre: "Fideos", precio: 1.99, valoracion: 5, imagen: "./img/fideos.jpg", categoria: "pastas" },
+    { id: 3, nombre: "Gaseosa", precio: 1.50, valoracion: 3, imagen: "./img/gaseosa.jpg", categoria: "bebidas" },
+    { id: 4, nombre: "Whisky", precio: 29.99, valoracion: 4, imagen: "./img/whisky.jpg", categoria: "licores" },
+    { id: 5, nombre: "Chocolate", precio: 0.99, valoracion: 5, imagen: "./img/chocolate.jpg", categoria: "golosinas" },
+    { id: 6, nombre: "Pop Corn", precio: 2.99, valoracion: 4, imagen: "./img/pop-corn.jpg", categoria: "abarrotes" },
+    { id: 7, nombre: "Aceite", precio: 4.99, valoracion: 4, imagen: "./img/aceite.jpg", categoria: "abarrotes" },
+    { id: 8, nombre: "Arverja", precio: 3.99, valoracion: 4, imagen: "./img/arverja.jpg", categoria: "abarrotes"},
+    { id: 9, nombre: "Ravioles", precio: 3.99, valoracion: 4, imagen: "./img/ravioles.jpg", categoria: "pastas" },
+    { id: 10, nombre: "Jugo", precio: 2.50, valoracion: 3, imagen: "./img/jugos.jpg", categoria: "bebidas" },
+    { id: 11, nombre: "Ron", precio: 19.99, valoracion: 4, imagen: "./img/ron.jpg", categoria: "licores" },
+    { id: 12, nombre: "Caramelos", precio: 0.50, valoracion: 3, imagen: "./img/caramelo.jpg", categoria: "golosinas" },
+    { id: 13, nombre: "Lenteja Bebe", precio: 2.99, valoracion: 4, imagen: "./img/lenteja-bebe.jpg", categoria: "abarrotes" },
+    { id: 14, nombre: "Gatorade", precio: 2.90, valoracion: 3, imagen: "./img/gatorade.jpg", categoria: "bebidas" },
+    { id: 15, nombre: "Vino tinto", precio: 44.99, valoracion: 4, imagen: "./img/vino-tinto.jpg", categoria: "licores" },
 ];
 
 let carrito = [];
@@ -23,9 +28,9 @@ function mostrarProductos() {
         const productoElement = document.createElement('div');
         productoElement.className = 'producto';
         productoElement.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}" width="150">
+            <img src="${producto.imagen}" alt="${producto.nombre}">
             <h3>${producto.nombre}</h3>
-            <p class="precio">$${producto.precio.toFixed(2)}</p>
+            <p class="precio">S/${producto.precio.toFixed(2)}</p>
             <p class="valoracion">${'★'.repeat(producto.valoracion)}${'☆'.repeat(5 - producto.valoracion)}</p>
             <button onclick="agregarAlCarrito(${producto.id})">Agregar al Carrito</button>
         `;
@@ -93,8 +98,8 @@ function actualizarCarrito() {
                 <span>${item.cantidad}</span>
                 <button onclick="incrementarCantidad(${item.id})">+</button>
             </div>
-            <span>$${(item.precio * item.cantidad).toFixed(2)}</span>
-            <button class="eliminar" onclick="eliminarDelCarrito(${item.id})">Eliminar</button>
+            <span>S/${(item.precio * item.cantidad).toFixed(2)}</span>
+            <button class="eliminar" onclick="eliminarDelCarrito(${item.id})">x</button>
         `;
         itemsCarrito.appendChild(itemElement);
 
@@ -110,9 +115,7 @@ function incrementarCantidad(id) {
     const item = carrito.find(i => i.id === id);
     if (item) {
         item.cantidad++;
-        actu
-
-alizarCarrito();
+        actualizarCarrito();
     }
 }
 
@@ -145,9 +148,9 @@ function realizarPedido(event) {
 
     let mensaje = `Hola, me gustaría hacer el siguiente pedido:\n\n`;
     carrito.forEach(item => {
-        mensaje += `${item.nombre} x${item.cantidad} - $${(item.precio * item.cantidad).toFixed(2)}\n`;
+        mensaje += `${item.nombre} x${item.cantidad} - S/${(item.precio * item.cantidad).toFixed(2)}\n`;
     });
-    mensaje += `\nTotal: $${document.getElementById('total-carrito').textContent}\n\n`;
+    mensaje += `\nTotal: S/${document.getElementById('total-carrito').textContent}\n\n`;
     mensaje += `Datos del cliente:\n`;
     mensaje += `Nombre: ${clienteData.nombre}\n`;
     mensaje += `Correo: ${clienteData.correo}\n`;
@@ -159,7 +162,7 @@ function realizarPedido(event) {
     const mensajeCodificado = encodeURIComponent(mensaje);
 
     // Reemplaza el número de teléfono con el de tu negocio
-    const numeroWhatsApp = '1234567890';
+    const numeroWhatsApp = '+51964392449';
 
     // Crear el enlace de WhatsApp
     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
@@ -186,7 +189,7 @@ function mostrarVistaAdmin() {
 
 // Event listeners
 document.getElementById('vista-cliente').addEventListener('click', mostrarVistaCliente);
-document.getElementById('vista-admin').addEventListener('click', mostrarVistaAdmin);
+// document.getElementById('vista-admin').addEventListener('click', mostrarVistaAdmin);
 document.getElementById('toggle-carrito').addEventListener('click', toggleCarrito);
 document.getElementById('formulario-cliente').addEventListener('submit', realizarPedido);
 document.getElementById('buscar-productos').addEventListener('input', buscarProductos);
